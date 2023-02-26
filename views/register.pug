@@ -1,0 +1,35 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD', crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js', integrity='sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN', crossorigin='anonymous')
+        link(rel="stylesheet", href="/css/login.css") 
+        title Register
+    body
+        .wrapper
+            .loginContainer 
+                h1 Register
+                form#ragisterForm(method="POST", onSubmit="event.preventDefault(); validateForm();")
+                    input(type="text", name="firstName", placeholder="First Name", required="")
+                    input(type="text", name="lastName", placeholder="Last Name", required="")
+                    input(type="text", name="username", placeholder="Username", required="")
+                    input(type="email", name="email", placeholder="Email", required="")
+                    input#password(type="password", name="password", placeholder="Password", required="")
+                    input#passwordConf(type="password", name="passwordConf", placeholder="Confirm Password", required="")
+                    input(type="submit", value="Register")
+                a(href="/login") Already have an account? Login here.
+        script.
+            var passwordField = document.getElementById('password');
+            var passwordConfField = document.getElementById('passwordConf');
+            var form = document.getElementById('ragisterForm');
+
+            function validateForm(){
+                if(passwordField.value != passwordConfField.value){
+                    alert('Passwords do not match');
+                    return false;
+                }
+                return form.submit();
+            }
